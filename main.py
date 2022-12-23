@@ -182,6 +182,20 @@ class MyModal111(ui.Modal, title = 'Кадровый Аудит - Увольне
 async def modal1(interaction: discord.Interaction):
     await interaction.response.send_modal(MyModal111())
 
+class MyModal1111(ui.Modal, title = 'Кадровый Аудит - Смена данных'):
+    #old_client = ui.TextInput(label = 'Ваше Имя Фамилия, Static_ID', placeholder = 'Пример: Zenicu Lena #45970', style =discord.TextStyle.short)
+    old_client = ui.TextInput(label = 'Новое имя', placeholder='Пример: George Lena #8913 ',style = discord.TextStyle.short)
+    aboutt = ui.TextInput(label = 'Причина изменения данных ', placeholder='Пример: Вышел замуж', style = discord.TextStyle.short)
+    black_list = ui.TextInput(label = 'Отметка об одобрении', placeholder=f'Пример: [ https://media.discordapp.net/attachments/945718713385119816/1055936214361985034/image.png ]', style = discord.TextStyle.short)
+
+
+    async def on_submit(self, interaction: discord.Interaction):
+        await interaction.response.send_message(f'**Сотрудник:** `{interaction.user.nick}`\n**Уволил:** `{self.old_client}`\n**Причина увольнения:** `{self.aboutt}`\n**Данные о занесении в ЧС:** `{self.black_list}`')
+
+@bot.tree.command(name = 'changename', description = 'Смена персональных данных')
+async def modal1(interaction: discord.Interaction):
+    await interaction.response.send_modal(MyModal1111())
+
 
 import discord
 from discord import app_commands
